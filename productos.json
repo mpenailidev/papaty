@@ -1,0 +1,200 @@
+[
+  {
+    "id": 1,
+    "nombre": "Tostadora ursus trotter 2 panes negra",
+    "descripcion": "Tostadora de dos panes, color negro, marca Ursus Trotter, ideal para desayunos rápidos.",
+    "imagenes": ["images/tostadora.jpeg"],
+    "precio_mercado": 20000,
+    "descuento": 35,
+    "precio_final": 13000
+  },
+  {
+    "id": 2,
+    "nombre": "Hervidor ursus trotter negra",
+    "descripcion": "Hervidor eléctrico negro, marca Ursus Trotter, calienta agua en minutos.",
+    "imagenes": ["images/tetera electrica.jpeg"],
+    "precio_mercado": 15000,
+    "descuento": 40,
+    "precio_final": 9000
+  },
+  {
+    "id": 3,
+    "nombre": "Horno microondas kubli A (eficiencia)",
+    "descripcion": "Horno microondas marca Kubli, clase de eficiencia A, con múltiples funciones.",
+    "imagenes": ["images/horno_microondas.jpeg", "images/horno_microondas_abierto.jpeg"],
+    "precio_mercado": 80000,
+    "descuento": 30,
+    "precio_final": 56000
+  },
+  {
+    "id": 4,
+    "nombre": "Procesador de alimentos",
+    "descripcion": "Procesador de alimentos con múltiples accesorios, perfecto para cocina.",
+    "imagenes": ["images/procesador_alimentos.jpeg"],
+    "precio_mercado": 40000,
+    "descuento": 45,
+    "precio_final": 22000
+  },
+  {
+    "id": 5,
+    "nombre": "Refrigerador Midea",
+    "descripcion": "Refrigerador marca Midea, capacidad media, eficiente y en buen estado.",
+    "imagenes": ["images/refrigerador.jpeg", "images/refri_abajo.jpeg", "images/refri_arriba.jpeg"],
+    "precio_mercado": 300000,
+    "descuento": 50,
+    "precio_final": 150000
+  },
+  {
+    "id": 6,
+    "nombre": "Sofa 2 cuerpos con 2 cojines",
+    "descripcion": "Sofá de dos cuerpos, incluye dos cojines, cómodo y en excelente estado.",
+    "imagenes": ["images/sofa_2_cuerpos.jpeg"],
+    "precio_mercado": 250000,
+    "descuento": 40,
+    "precio_final": 150000
+  },
+  {
+    "id": 7,
+    "nombre": "Mesa triangular con adornos",
+    "descripcion": "Mesa triangular de diseño moderno, incluye adornos decorativos.",
+    "imagenes": ["images/mesa_adorno.jpeg"],
+    "precio_mercado": 50000,
+    "descuento": 35,
+    "precio_final": 32500
+  },
+  {
+    "id": 8,
+    "nombre": "Rack tv musica (sin adornos)",
+    "descripcion": "Rack para TV y equipo de música, madera, sin adornos, diseño minimalista.",
+    "imagenes": ["images/rack_madera.jpeg"],
+    "precio_mercado": 60000,
+    "descuento": 30,
+    "precio_final": 42000
+  },
+  {
+    "id": 9,
+    "nombre": "Lampara de pie",
+    "descripcion": "Lámpara de pie con base estable, ideal para iluminación de ambientes.",
+    "imagenes": ["images/lampar_pedestal.jpeg"],
+    "precio_mercado": 30000,
+    "descuento": 40,
+    "precio_final": 18000
+  },
+  {
+    "id": 10,
+    "nombre": "Cortinas blackout dpto completo visillo lino",
+    "descripcion": "Set completo de cortinas blackout con visillo de lino para todo el departamento.",
+    "imagenes": ["images/cortinas_backout_visillo_lino_dormmitorio_principal.jpeg", "images/cortinas_blackout_visillo_lino_living_1.jpeg", "images/cortinas_blackout_visillo_lino_living_2.jpeg", "images/cortinas_blackout_visillo_lino_pieza_1.jpeg"],
+    "precio_mercado": 120000,
+    "descuento": 50,
+    "precio_final": 60000
+  },
+  {
+    "id": 11,
+    "nombre": "Lampara de techo living",
+    "descripcion": "Lámpara de techo para living, diseño moderno, iluminación cálida.",
+    "imagenes": ["images/lampara_cielo_living.jpeg"],
+    "precio_mercado": 45000,
+    "descuento": 35,
+    "precio_final": 29250
+  },
+  {
+    "id": 12,
+    "nombre": "2 pisos para isla (altos)",
+    "descripcion": "Dos pisos para isla de cocina, altos, ideales para almacenamiento.",
+    "imagenes": ["images/sillas_isla.jpeg"],
+    "precio_mercado": 70000,
+    "descuento": 30,
+    "precio_final": 49000
+  },
+  {
+    "id": 13,
+    "nombre": "Lampara hall de entrada",
+    "descripcion": "Lámpara para hall de entrada, diseño elegante, ilumina el recibidor.",
+    "imagenes": ["images/lampara_hall.jpeg"],
+    "precio_mercado": 25000,
+    "descuento": 40,
+    "precio_final": 15000
+  },
+  {
+    "id": 14,
+    "nombre": "Silla dormitorio 1",
+    "descripcion": "Silla para dormitorio, cómoda y funcional, color neutro.",
+    "imagenes": ["images/silla_dorm_1.jpeg"],
+    "precio_mercado": 35000,
+    "descuento": 45,
+    "precio_final": 19250
+  },
+  {
+    "id": 15,
+    "nombre": "Lampara dormitorio 1",
+    "descripcion": "Lámpara para dormitorio, luz ajustable, perfecta para lectura.",
+    "imagenes": ["images/lampara_dorm_1.jpeg", "images/lampara_dorm_2.jpeg"],
+    "precio_mercado": 20000,
+    "descuento": 30,
+    "precio_final": 14000
+  },
+  {
+    "id": 16,
+    "nombre": "Aspiradora con sus accesorios",
+    "descripcion": "Aspiradora completa con todos sus accesorios, potente y eficiente.",
+    "imagenes": ["images/aspiradora_full.jpeg"],
+    "precio_mercado": 80000,
+    "descuento": 40,
+    "precio_final": 48000
+  },
+  {
+    "id": 17,
+    "nombre": "2 veladores dormitorio principal",
+    "descripcion": "Par de veladores para dormitorio principal, diseño clásico.",
+    "imagenes": ["images/veladores_dorm_principal.jpeg"],
+    "precio_mercado": 40000,
+    "descuento": 50,
+    "precio_final": 20000
+  },
+  {
+    "id": 18,
+    "nombre": "Mueble escritorio sencillo",
+    "descripcion": "Mueble escritorio sencillo, ideal para home office o estudio.",
+    "imagenes": ["images/escritorio_sencillo.jpeg"],
+    "precio_mercado": 45000,
+    "descuento": 35,
+    "precio_final": 29250
+  },
+  {
+    "id": 19,
+    "nombre": "Mueble lado dormitorio (con o sin cajas)",
+    "descripcion": "Mueble lateral para dormitorio, se entrega con cajas si se desea.",
+    "imagenes": ["images/mueble_dorm_principal_con_cajas.jpeg"],
+    "precio_mercado": 70000,
+    "descuento": 40,
+    "precio_final": 42000
+  },
+  {
+    "id": 20,
+    "nombre": "Colchón 2 plazas 1.9 x 2.0 cic",
+    "descripcion": "Colchón dos plazas, medidas 1.9 x 2.0 metros, semi nuevo.",
+    "imagenes": ["images/colchon_2_plazas_seminuevo.jpeg", "images/colchon_foto_2.jpeg", "images/colchon_foto_3.jpeg"],
+    "precio_mercado": 150000,
+    "descuento": 50,
+    "precio_final": 75000
+  },
+  {
+    "id": 21,
+    "nombre": "Basurero con choapino baño",
+    "descripcion": "Basurero con choapino para baño, práctico y discreto.",
+    "imagenes": ["images/choapino_con_basurero_baño.jpeg"],
+    "precio_mercado": 25000,
+    "descuento": 40,
+    "precio_final": 15000
+  },
+  {
+    "id": 22,
+    "nombre": "Cortinas de baño principal",
+    "descripcion": "Cortinas para baño principal, diseño moderno, impermeables.",
+    "imagenes": ["images/cortinas_baño.jpeg"],
+    "precio_mercado": 30000,
+    "descuento": 30,
+    "precio_final": 21000
+  }
+]

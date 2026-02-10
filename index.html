@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Papaty - Venta Única por Oportunidad</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="logo">
+                <h1><i class="fas fa-leaf"></i> Papaty</h1>
+                <p class="tagline">Venta única por oportunidad - Artículos seleccionados para tu hogar</p>
+            </div>
+            <div class="cart-icon" id="cartToggle">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-count" id="cartCount">0</span>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <section class="product-display">
+                <div class="carousel-dots-container">
+                    <div class="carousel-dots" id="carouselDots">
+                        <!-- Los dots se generarán dinámicamente -->
+                    </div>
+                </div>
+                <div class="carousel-container">
+                    <div class="carousel" id="carousel">
+                        <!-- Los productos se insertarán dinámicamente con JavaScript -->
+                    </div>
+                    <button class="carousel-btn prev" id="prevBtn"><i class="fas fa-chevron-left"></i></button>
+                    <button class="carousel-btn next" id="nextBtn"><i class="fas fa-chevron-right"></i></button>
+                </div>
+                <div class="product-title-container">
+                    <h2 id="productTitle">Producto</h2>
+                    <p class="product-description" id="productDescription">Descripción del producto.</p>
+                </div>
+            </section>
+
+            <section class="cart-sidebar" id="cartSidebar">
+                <div class="sidebar-product-info">
+                    <div class="pricing">
+                        <div class="market-price">
+                            <span class="label">Precio de mercado:</span>
+                            <span class="price original" id="marketPrice">$0</span>
+                        </div>
+                        <div class="discount">
+                            <span class="label">Descuento:</span>
+                            <span class="percent" id="discountPercent">0%</span>
+                        </div>
+                        <div class="final-price">
+                            <span class="label">Precio final:</span>
+                            <span class="price final" id="finalPrice">$0</span>
+                        </div>
+                    </div>
+                    <button class="add-to-cart-btn" id="addToCart">
+                        <i class="fas fa-plus-circle"></i> Seleccionar artículo
+                    </button>
+                </div>
+                
+                <div class="cart-title-total-container">
+                    <div class="cart-title-total-group">
+                        <h3><i class="fas fa-shopping-cart"></i> Tu Carrito</h3>
+                        <div class="cart-total-header">
+                            <span>Total:</span>
+                            <span class="cart-total" id="cartTotal">$0</span>
+                        </div>
+                    </div>
+                    <button class="close-cart" id="closeCart"><i class="fas fa-times"></i></button>
+                </div>
+                
+                <div class="cart-items" id="cartItems">
+                    <!-- Los items del carrito se insertarán dinámicamente -->
+                    <p class="empty-cart-message">Tu carrito está vacío</p>
+                </div>
+                
+                <div class="cart-summary">
+                    <button class="checkout-btn" id="checkoutBtn"><i class="fas fa-file-pdf"></i> Confirmar orden (PDF)</button>
+                    <button class="clear-cart-btn" id="clearCartBtn">Vaciar carrito</button>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <p>© 2026 Papaty. Venta única por oportunidad. Todos los derechos reservados.</p>
+        </footer>
+    </div>
+
+    <div class="notification" id="notification">
+        <span id="notificationText"></span>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
