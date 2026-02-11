@@ -752,7 +752,7 @@ body {
     .cart-sidebar .sidebar-product-info {
         display: none;
     }
-    /* Estilos para el botón fijo móvil (será agregado por JS) */
+    /* Estilos para el botón fijo móvil */
     #mobile-product-info {
         display: block;
         position: fixed;
@@ -764,6 +764,56 @@ body {
         padding: 15px;
         box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.1);
         border-radius: 16px 16px 0 0;
+    }
+    .mobile-pricing {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 15px;
+    }
+    .mobile-price-row {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex: 1;
+    }
+    .mobile-label {
+        font-weight: 500;
+        color: #4a6fa5;
+        font-size: 1rem;
+    }
+    .mobile-final-price {
+        font-size: 1.5rem;
+        color: #0077ff;
+        font-weight: 700;
+    }
+    .mobile-add-to-cart-btn {
+        background: linear-gradient(135deg, #0077ff, #00a2ff);
+        color: white;
+        border: none;
+        border-radius: 12px;
+        padding: 12px 20px;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        transition: all 0.3s ease;
+        box-shadow: 0 6px 18px rgba(0, 119, 255, 0.3);
+        white-space: nowrap;
+    }
+    .mobile-add-to-cart-btn:hover {
+        background: linear-gradient(135deg, #0056cc, #0088dd);
+        transform: translateY(-2px);
+    }
+    .mobile-add-to-cart-btn.selected {
+        background: linear-gradient(135deg, #00c853, #00e676);
+        box-shadow: 0 6px 18px rgba(0, 200, 83, 0.3);
+    }
+    .mobile-add-to-cart-btn.selected:hover {
+        background: linear-gradient(135deg, #00b248, #00d16b);
     }
     /* Overlay para cerrar sidebar */
     .cart-sidebar-overlay {
@@ -823,6 +873,17 @@ body {
         font-size: 0.8rem;
         padding: 4px 10px;
     }
+    /* Ajustes para botón móvil en tablets */
+    .mobile-pricing {
+        gap: 10px;
+    }
+    .mobile-final-price {
+        font-size: 1.3rem;
+    }
+    .mobile-add-to-cart-btn {
+        padding: 10px 16px;
+        font-size: 0.9rem;
+    }
 }
 
 @media (max-width: 480px) {
@@ -860,5 +921,25 @@ body {
     .image-position-indicator {
         font-size: 0.7rem;
         padding: 3px 8px;
+    }
+    /* Ajustes para botón móvil en móviles pequeños */
+    #mobile-product-info {
+        padding: 12px;
+    }
+    .mobile-pricing {
+        flex-direction: column;
+        gap: 8px;
+        align-items: stretch;
+    }
+    .mobile-price-row {
+        justify-content: space-between;
+    }
+    .mobile-final-price {
+        font-size: 1.2rem;
+    }
+    .mobile-add-to-cart-btn {
+        padding: 10px;
+        font-size: 0.9rem;
+        width: 100%;
     }
 }

@@ -209,17 +209,29 @@ function actualizarImagenesProductos() {
     });
 }
 
-// Actualizar botón móvil clonado
+// Actualizar botón móvil
 function actualizarBotonMovil() {
     const mobileInfo = document.getElementById('mobile-product-info');
     if (!mobileInfo) return;
-    const sidebarProductInfo = document.querySelector('.sidebar-product-info');
-    if (sidebarProductInfo) {
-        mobileInfo.innerHTML = sidebarProductInfo.innerHTML;
-        // Reasignar evento al botón dentro del clon
-        const btn = mobileInfo.querySelector('button');
-        if (btn) {
-            btn.addEventListener('click', agregarAlCarrito);
+    
+    const producto = productos[productoActual];
+    if (!producto) return;
+    
+    const estaEnCarrito = carrito.some(item => item.id === producto.id);
+    const mobileFinalPrice = document.getElementById('mobileFinalPrice');
+    const mobileAddToCartBtn = document.getElementById('mobileAddToCart');
+    
+    if (mobileFinalPrice) {
+        mobileFinalPrice.textContent = formatoPrecio(producto.precioFinal);
+    }
+    
+    if (mobileAddToCartBtn) {
+        if (estaEnCarrito) {
+            mobileAddToCartBtn.innerHTML = '<i class="fas fa-check-circle"></i> Artículo seleccionado';
+            mobileAddToCartBtn.classList.add('selected');
+        } else {
+            mobileAddToCartBtn.innerHTML = '<i class="fas fa-plus-circle"></i> Seleccionar artículo';
+            mobileAddToCartBtn.classList.remove('selected');
         }
     }
 }
@@ -510,33 +522,69 @@ function configurarEventListeners() {
         }
     });
     
-    // Crear elementos móviles si es necesario
-    if (window.innerWidth <= 1100) {
-        // Overlay
-        let overlay = document.querySelector('.cart-sidebar-overlay');
-        if (!overlay) {
-            overlay = document.createElement('div');
-            overlay.className = 'cart-sidebar-overlay';
-            overlay.addEventListener('click', () => {
-                cartSidebar.classList.remove('open');
-                overlay.style.display = 'none';
-            });
-            document.body.appendChild(overlay);
-        }
-        // Botón móvil
-        let mobileInfo = document.getElementById('mobile-product-info');
-        const sidebarProductInfo = document.querySelector('.sidebar-product-info');
-        if (!mobileInfo && sidebarProductInfo) {
-            mobileInfo = sidebarProductInfo.cloneNode(true);
-            mobileInfo.id = 'mobile-product-info';
-            // Cambiar id del botón dentro para evitar duplicados
-            const btn = mobileInfo.querySelector('#addToCart');
-            if (btn) btn.id = 'addToCartMobile';
-            document.body.appendChild(mobileInfo);
-            // Asignar evento al botón clonado
-            mobileInfo.querySelector('button').addEventListener('click', agregarAlCarrito);
+    // Inicializar elementos móviles y manejar resize
+    function inicializarElementosMoviles() {
+        const esMovil = window.innerWidth <= 1100;
+        console.log('Inicializando elementos móviles, esMovil:', esMovil, 'window.innerWidth:', window.innerWidth);
+        
+        if (esMovil) {
+            // Overlay - insertar como hermano del sidebar
+            let overlay = document.querySelector('.cart-sidebar-overlay');
+            if (!overlay) {
+                overlay = document.createElement('div');
+                overlay.className = 'cart-sidebar-overlay';
+                overlay.addEventListener('click', () => {
+                    cartSidebar.classList.remove('open');
+                });
+                // Insertar después del sidebar para que el selector ~ funcione
+                cartSidebar.parentNode.insertBefore(overlay, cartSidebar.nextSibling);
+            }
+            
+            // Botón móvil - crear solo si no existe
+            let mobileInfo = document.getElementById('mobile-product-info');
+            const sidebarProductInfo = document.querySelector('.sidebar-product-info');
+            if (!mobileInfo && sidebarProductInfo) {
+                mobileInfo = document.createElement('div');
+                mobileInfo.id = 'mobile-product-info';
+                mobileInfo.className = 'mobile-product-info';
+                mobileInfo.innerHTML = `
+                    <div class="mobile-pricing">
+                        <div class="mobile-price-row">
+                            <span class="mobile-label">Precio final:</span>
+                            <span class="mobile-final-price" id="mobileFinalPrice">$0</span>
+                        </div>
+                        <button class="mobile-add-to-cart-btn" id="mobileAddToCart">
+                            <i class="fas fa-plus-circle"></i> Seleccionar artículo
+                        </button>
+                    </div>
+                `;
+                document.body.appendChild(mobileInfo);
+                
+                // Asignar evento al botón móvil
+                document.getElementById('mobileAddToCart').addEventListener('click', agregarAlCarrito);
+            }
+            
+            // Actualizar información del botón móvil
+            actualizarBotonMovil();
+        } else {
+            // En escritorio, eliminar elementos móviles si existen
+            const overlay = document.querySelector('.cart-sidebar-overlay');
+            if (overlay) overlay.remove();
+            
+            const mobileInfo = document.getElementById('mobile-product-info');
+            if (mobileInfo) mobileInfo.remove();
         }
     }
+    
+    // Llamar inicialización al cargar
+    inicializarElementosMoviles();
+    
+    // Manejar cambios de tamaño de ventana
+    let timeoutResize;
+    window.addEventListener('resize', () => {
+        clearTimeout(timeoutResize);
+        timeoutResize = setTimeout(inicializarElementosMoviles, 250);
+    });
 }
 
 // Inicializar la aplicación
