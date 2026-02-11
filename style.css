@@ -946,26 +946,7 @@ body {
         font-size: 0.7rem;
         padding: 3px 8px;
     }
-    /* Ajustes para botón móvil en móviles pequeños */
-    #mobile-product-info {
-        padding: 10px;
-    }
-    .mobile-pricing {
-        flex-direction: column;
-        gap: 8px;
-        align-items: stretch;
-    }
-    .mobile-price-row {
-        justify-content: space-between;
-    }
-    .mobile-final-price {
-        font-size: 1.2rem;
-    }
-    .mobile-add-to-cart-btn {
-        padding: 10px;
-        font-size: 0.9rem;
-        width: 100%;
-    }
+
 }
 
 /* Estilos para elementos móviles (siempre en el DOM) */
