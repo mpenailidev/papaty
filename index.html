@@ -96,6 +96,28 @@
         <span id="notificationText"></span>
     </div>
 
+    <!-- Botón fijo para móviles -->
+    <div id="mobile-product-info" class="mobile-product-info">
+        <div class="mobile-cart-icon-row">
+            <div class="mobile-cart-icon" id="mobileCartToggle">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="mobile-cart-count" id="mobileCartCount">0</span>
+            </div>
+        </div>
+        <div class="mobile-pricing">
+            <div class="mobile-price-row">
+                <span class="mobile-label">Precio final:</span>
+                <span class="mobile-final-price" id="mobileFinalPrice">$0</span>
+            </div>
+            <button class="mobile-add-to-cart-btn" id="mobileAddToCart">
+                <i class="fas fa-plus-circle"></i> Seleccionar artículo
+            </button>
+        </div>
+    </div>
+
+    <!-- Overlay para cerrar sidebar móvil -->
+    <div class="cart-sidebar-overlay"></div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="script.js"></script>
 </body>

@@ -35,6 +35,7 @@ function formatoPrecio(precio) {
 async function cargarProductos() {
     try {
         console.log('Cargando productos.json...');
+        console.log('Viewport width:', window.innerWidth, 'isMobile:', window.innerWidth <= 1100);
         const response = await fetch('productos.json');
         if (!response.ok) {
             throw new Error('No se pudo cargar productos.json');
@@ -292,6 +293,8 @@ function anteriorProducto() {
 function actualizarCarrito() {
     // Actualizar contador (cada item tiene cantidad 1)
     cartCount.textContent = carrito.length;
+    const mobileCartCount = document.getElementById('mobileCartCount');
+    if (mobileCartCount) mobileCartCount.textContent = carrito.length;
     
     // Actualizar lista de items
     cartItems.innerHTML = '';
@@ -522,69 +525,33 @@ function configurarEventListeners() {
         }
     });
     
-    // Inicializar elementos móviles y manejar resize
-    function inicializarElementosMoviles() {
-        const esMovil = window.innerWidth <= 1100;
-        console.log('Inicializando elementos móviles, esMovil:', esMovil, 'window.innerWidth:', window.innerWidth);
-        
-        if (esMovil) {
-            // Overlay - insertar como hermano del sidebar
-            let overlay = document.querySelector('.cart-sidebar-overlay');
-            if (!overlay) {
-                overlay = document.createElement('div');
-                overlay.className = 'cart-sidebar-overlay';
-                overlay.addEventListener('click', () => {
-                    cartSidebar.classList.remove('open');
-                });
-                // Insertar después del sidebar para que el selector ~ funcione
-                cartSidebar.parentNode.insertBefore(overlay, cartSidebar.nextSibling);
-            }
-            
-            // Botón móvil - crear solo si no existe
-            let mobileInfo = document.getElementById('mobile-product-info');
-            const sidebarProductInfo = document.querySelector('.sidebar-product-info');
-            if (!mobileInfo && sidebarProductInfo) {
-                mobileInfo = document.createElement('div');
-                mobileInfo.id = 'mobile-product-info';
-                mobileInfo.className = 'mobile-product-info';
-                mobileInfo.innerHTML = `
-                    <div class="mobile-pricing">
-                        <div class="mobile-price-row">
-                            <span class="mobile-label">Precio final:</span>
-                            <span class="mobile-final-price" id="mobileFinalPrice">$0</span>
-                        </div>
-                        <button class="mobile-add-to-cart-btn" id="mobileAddToCart">
-                            <i class="fas fa-plus-circle"></i> Seleccionar artículo
-                        </button>
-                    </div>
-                `;
-                document.body.appendChild(mobileInfo);
-                
-                // Asignar evento al botón móvil
-                document.getElementById('mobileAddToCart').addEventListener('click', agregarAlCarrito);
-            }
-            
-            // Actualizar información del botón móvil
-            actualizarBotonMovil();
-        } else {
-            // En escritorio, eliminar elementos móviles si existen
-            const overlay = document.querySelector('.cart-sidebar-overlay');
-            if (overlay) overlay.remove();
-            
-            const mobileInfo = document.getElementById('mobile-product-info');
-            if (mobileInfo) mobileInfo.remove();
-        }
+    // Configurar overlay para cerrar sidebar en móviles
+    const overlay = document.querySelector('.cart-sidebar-overlay');
+    if (overlay) {
+        overlay.addEventListener('click', () => {
+            cartSidebar.classList.remove('open');
+            overlay.style.display = 'none';
+        });
     }
     
-    // Llamar inicialización al cargar
-    inicializarElementosMoviles();
+    // Configurar ícono de carrito móvil
+    const mobileCartToggle = document.getElementById('mobileCartToggle');
+    if (mobileCartToggle) {
+        mobileCartToggle.addEventListener('click', () => {
+            cartSidebar.classList.add('open');
+            const overlay = document.querySelector('.cart-sidebar-overlay');
+            if (overlay) overlay.style.display = 'block';
+        });
+    }
     
-    // Manejar cambios de tamaño de ventana
-    let timeoutResize;
-    window.addEventListener('resize', () => {
-        clearTimeout(timeoutResize);
-        timeoutResize = setTimeout(inicializarElementosMoviles, 250);
-    });
+    // Configurar botón móvil si existe
+    const mobileAddToCartBtn = document.getElementById('mobileAddToCart');
+    if (mobileAddToCartBtn) {
+        mobileAddToCartBtn.addEventListener('click', agregarAlCarrito);
+    }
+    
+    // Actualizar botón móvil al cargar
+    actualizarBotonMovil();
 }
 
 // Inicializar la aplicación

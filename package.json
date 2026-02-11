@@ -1,0 +1,24 @@
+{
+  "name": "landing_papaty",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mpenailidev/papaty.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/mpenailidev/papaty/issues"
+  },
+  "homepage": "https://github.com/mpenailidev/papaty#readme",
+  "dependencies": {
+    "puppeteer": "^24.37.2"
+  }
+}
