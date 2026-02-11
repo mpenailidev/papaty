@@ -209,6 +209,21 @@ function actualizarImagenesProductos() {
     });
 }
 
+// Actualizar botón móvil clonado
+function actualizarBotonMovil() {
+    const mobileInfo = document.getElementById('mobile-product-info');
+    if (!mobileInfo) return;
+    const sidebarProductInfo = document.querySelector('.sidebar-product-info');
+    if (sidebarProductInfo) {
+        mobileInfo.innerHTML = sidebarProductInfo.innerHTML;
+        // Reasignar evento al botón dentro del clon
+        const btn = mobileInfo.querySelector('button');
+        if (btn) {
+            btn.addEventListener('click', agregarAlCarrito);
+        }
+    }
+}
+
 // Actualizar información del producto actual
 function actualizarInfoProducto() {
     const producto = productos[productoActual];
@@ -237,6 +252,7 @@ function actualizarInfoProducto() {
         addToCartBtn.innerHTML = '<i class="fas fa-plus-circle"></i> Seleccionar artículo';
         addToCartBtn.classList.remove('selected');
     }
+    actualizarBotonMovil();
 }
 
 // Ir a posición específica del carrusel
@@ -307,6 +323,8 @@ function actualizarCarrito() {
     
     // Guardar en localStorage
     localStorage.setItem('carrito', JSON.stringify(carrito));
+    
+    actualizarBotonMovil();
 }
 
 // Eliminar item del carrito
@@ -345,6 +363,8 @@ function agregarAlCarrito() {
         // Abrir el carrito si está cerrado
         if (!cartSidebar.classList.contains('open')) {
             cartSidebar.classList.add('open');
+            const overlay = document.querySelector('.cart-sidebar-overlay');
+            if (overlay) overlay.style.display = 'block';
         }
     }
     
@@ -442,10 +462,14 @@ function configurarEventListeners() {
     
     cartToggle.addEventListener('click', () => {
         cartSidebar.classList.add('open');
+        const overlay = document.querySelector('.cart-sidebar-overlay');
+        if (overlay) overlay.style.display = 'block';
     });
     
     closeCart.addEventListener('click', () => {
         cartSidebar.classList.remove('open');
+        const overlay = document.querySelector('.cart-sidebar-overlay');
+        if (overlay) overlay.style.display = 'none';
     });
     
     checkoutBtn.addEventListener('click', () => {
@@ -485,6 +509,34 @@ function configurarEventListeners() {
             cartSidebar.classList.remove('open');
         }
     });
+    
+    // Crear elementos móviles si es necesario
+    if (window.innerWidth <= 1100) {
+        // Overlay
+        let overlay = document.querySelector('.cart-sidebar-overlay');
+        if (!overlay) {
+            overlay = document.createElement('div');
+            overlay.className = 'cart-sidebar-overlay';
+            overlay.addEventListener('click', () => {
+                cartSidebar.classList.remove('open');
+                overlay.style.display = 'none';
+            });
+            document.body.appendChild(overlay);
+        }
+        // Botón móvil
+        let mobileInfo = document.getElementById('mobile-product-info');
+        const sidebarProductInfo = document.querySelector('.sidebar-product-info');
+        if (!mobileInfo && sidebarProductInfo) {
+            mobileInfo = sidebarProductInfo.cloneNode(true);
+            mobileInfo.id = 'mobile-product-info';
+            // Cambiar id del botón dentro para evitar duplicados
+            const btn = mobileInfo.querySelector('#addToCart');
+            if (btn) btn.id = 'addToCartMobile';
+            document.body.appendChild(mobileInfo);
+            // Asignar evento al botón clonado
+            mobileInfo.querySelector('button').addEventListener('click', agregarAlCarrito);
+        }
+    }
 }
 
 // Inicializar la aplicación
